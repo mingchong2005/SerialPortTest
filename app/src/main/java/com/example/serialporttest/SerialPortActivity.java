@@ -30,6 +30,7 @@ import com.example.serialporttest.utils.SerialPort;
 import android.util.Log;
 
 public abstract class SerialPortActivity extends Activity {
+	private static final String TAG = "SerialPort";
 
 	protected SerialPortApplication mApplication;
 	protected SerialPort mSerialPort;
@@ -43,7 +44,7 @@ public abstract class SerialPortActivity extends Activity {
 		public void run() {
 			super.run();
 			
-			Log.i("chw", "SerialPortActivity ---> ReadThread run");
+			Log.i(TAG, "SerialPortActivity ---> ReadThread run");
 			
 			while(!isInterrupted()) {
 				int size;
@@ -53,7 +54,7 @@ public abstract class SerialPortActivity extends Activity {
 					size = mInputStream.read(buffer);
 
 					for(int i=0;i<buffer.length;i++){  
-						Log.i("chw", "SerialPortActivity ---> ReadThread run buffer[" + i +  " ] = " + buffer[i]);
+						Log.i(TAG, "SerialPortActivity ---> ReadThread run buffer[" + i +  " ] = " + buffer[i]);
 					} 
 					if (size > 0) {
 						onDataReceived(buffer, size);
@@ -68,7 +69,7 @@ public abstract class SerialPortActivity extends Activity {
 
 	private void DisplayError(int resourceId) {
 		
-		Log.i("chw", "SerialPortActivity ---> DisplayError");
+		Log.i(TAG, "SerialPortActivity ---> DisplayError");
 		
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setTitle("Error");
@@ -84,7 +85,7 @@ public abstract class SerialPortActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		Log.i("chw", "SerialPortActivity ---> onCreate");
+		Log.i(TAG, "SerialPortActivity ---> onCreate");
 		
 		super.onCreate(savedInstanceState);
 		mApplication = (SerialPortApplication) getApplication();
@@ -111,7 +112,7 @@ public abstract class SerialPortActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		
-		Log.i("chw", "SerialPortActivity ---> onDestroy");
+		Log.i(TAG, "SerialPortActivity ---> onDestroy");
 		
 		if (mReadThread != null)
 		mReadThread.interrupt();

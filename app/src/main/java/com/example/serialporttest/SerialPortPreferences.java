@@ -25,6 +25,7 @@ import com.example.serialporttest.utils.SerialPortFinder;
 import android.util.Log;
 
 public class SerialPortPreferences extends PreferenceActivity {
+	private static final String TAG = "SerialPort";
 
 	private SerialPortApplication mApplication;
 	private SerialPortFinder mSerialPortFinder;
@@ -33,7 +34,7 @@ public class SerialPortPreferences extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Log.i("chw", "SerialPortPreferences ---> onCreate");
+		Log.i(TAG, "SerialPortPreferences ---> onCreate");
 		
 		mApplication = (SerialPortApplication) getApplication();
 		mSerialPortFinder = mApplication.mSerialPortFinder;

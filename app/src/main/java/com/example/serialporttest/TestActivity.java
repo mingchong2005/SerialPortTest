@@ -32,9 +32,10 @@ import android.content.DialogInterface.OnClickListener;
 
 
 public class TestActivity extends SerialPortActivity {
-
+	private static final String TAG = "SerialPort";
 	EditText mReception;
 	String Result = "+DMOCONNECT";
+	static EditText mInputText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,8 @@ public class TestActivity extends SerialPortActivity {
 
 		mReception = (EditText) findViewById(R.id.EditTextReceive);
 
-		Log.i("chw", "TestActivity ---> onCreate");
+		Log.i(TAG, "TestActivity ---> onCreate");
 		
-
 		Button SendBtn = (Button)findViewById(R.id.TestBtn);
 		SendBtn.setOnClickListener(SendBtnBtnListener);
 
@@ -62,14 +62,15 @@ public class TestActivity extends SerialPortActivity {
 		Button ReceiveBtn = (Button)findViewById(R.id.Receive);
 		ReceiveBtn.setOnClickListener(ReceiveBtnListener);
 
+		mInputText = (EditText) findViewById(R.id.EditTextInput);
+		//mInputText.requestFocus();
 	}
-	
 
 	private View.OnClickListener SendBtnBtnListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			int i;	
-			String test = "AT+DMOCONNECT\r";
+			String test = "sip get_ver";
 			
 				try {
 					mOutputStream.write(new String(test).getBytes());
@@ -79,61 +80,158 @@ public class TestActivity extends SerialPortActivity {
 				}
 			  }
 	};
-
 
 	private View.OnClickListener SetGroupBtnListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			int i;	
-			String test = "AT+DMOSETGROUP=0,409.7500,409.7500,01,1,1\r";
-			
+			String test = "sip get_hw_model";
+			String ConvertString = null;
+			CharSequence editText = mInputText.getText();
+
+			if(editText == null || editText.length() == 0){
+				mReception.setText("数据为空，写入失败");
+			}
+			else{
+				ConvertString = editText.toString();
+				Log.e(TAG, "ConvertString = " + ConvertString);
+
 				try {
-					mOutputStream.write(new String(test).getBytes());
+					mOutputStream.write(new String(ConvertString).getBytes());
 					//mOutputStream.write('0x0d');
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			  }
+		}
 	};
 
 	private View.OnClickListener VolumeBtnBtnListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			int i;	
-			String test = "AT+DMOSETVOLUME=8\r";
-			
+			int i;
+			String[] test = {
+					"mac set_ch_freq 0 867100000",
+					"mac set_ch_freq 1 867300000",
+					"mac set_ch_freq 2 867500000",
+					"mac set_ch_freq 3 867700000",
+					"mac set_ch_freq 4 867900000",
+					"mac set_ch_freq 5 868100000",
+					"mac set_ch_freq 6 868300000",
+					"mac set_ch_freq 7 868500000",
+					"mac set_rx2 0 868000000",
+					"mac set_class C",
+					"mac set_rx1_freq 867100000 200000 8",
+					"mac set_deveui 4736549f00311111",
+					"mac set_appeui 526973696e671111",
+					"mac set_appkey 2b7e151628aed2a6abf7158809cf1111",
+					"mac join otaa",
+					"mac tx ucnf 15 98ba34fd",
+			};
+
+			for (i = 0; i < test.length; i++) {
 				try {
-					mOutputStream.write(new String(test).getBytes());
+					mOutputStream.write(new String(test[i]).getBytes());
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					//mOutputStream.write('0x0d');
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			  }
+			}
+		}
 	};
 
 
 	private View.OnClickListener TrsmitBtnBtnListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			//mSerialPort.interphone_module_Transmit(1);
+			int i;
+			String[] test = {
+					"mac set_ch_freq 0 867100000",
+					"mac set_ch_freq 1 867300000",
+					"mac set_ch_freq 2 867500000",
+					"mac set_ch_freq 3 867700000",
+					"mac set_ch_freq 4 867900000",
+					"mac set_ch_freq 5 868100000",
+					"mac set_ch_freq 6 868300000",
+					"mac set_ch_freq 7 868500000",
+					"mac set_rx2 0 868000000",
+					"mac set_class C",
+					"mac set_rx1_freq 867100000 200000 8",
+					"mac set_deveui 4736549f00312222",
+					"mac set_appeui 526973696e672222",
+					"mac set_appkey 2b7e151628aed2a6abf7158809cf2222",
+					"mac join otaa",
+					"mac tx ucnf 15 98ba34fd",
+			};
+
+			for (i = 0; i < test.length; i++) {
+				try {
+					mOutputStream.write(new String(test[i]).getBytes());
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					//mOutputStream.write('0x0d');
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+		}
 	};
 
 	private View.OnClickListener ReceiveBtnListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			//mSerialPort.interphone_module_Transmit(0);
+			int i;
+			String[] test = {
+					"mac set_ch_freq 0 867100000",
+					"mac set_ch_freq 1 867300000",
+					"mac set_ch_freq 2 867500000",
+					"mac set_ch_freq 3 867700000",
+					"mac set_ch_freq 4 867900000",
+					"mac set_ch_freq 5 868100000",
+					"mac set_ch_freq 6 868300000",
+					"mac set_ch_freq 7 868500000",
+					"mac set_rx2 0 868000000",
+					"mac set_class C",
+					"mac set_rx1_freq 867100000 200000 8",
+					"mac set_deveui 4736549f00313333",
+					"mac set_appeui 526973696e673333",
+					"mac set_appkey 2b7e151628aed2a6abf7158809cf3333",
+					"mac join otaa",
+					"mac tx ucnf 15 98ba34fd",
+			};
+
+			for (i = 0; i < test.length; i++) {
+				try {
+					mOutputStream.write(new String(test[i]).getBytes());
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					//mOutputStream.write('0x0d');
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+		}
 	};
 
 
 	@Override
 	protected void onDataReceived(final byte[] buffer, final int size) {
-		Log.i("chw", "TestActivity ---> onDataReceived");
+		Log.i(TAG, "TestActivity ---> onDataReceived");
 		runOnUiThread(new Runnable() {
 			public void run() {
 					//String strReceive = convertHexToString(byteToHexString(buffer,size));
-					//Log.i("chw", "TestActivity ---> onDataReceived" + strReceive);
+					//Log.i(TAG, "TestActivity ---> onDataReceived" + strReceive);
 					//JudgeResult(strReceive);
 
 					if (mReception != null) {  

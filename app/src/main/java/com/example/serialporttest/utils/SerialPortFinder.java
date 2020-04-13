@@ -29,7 +29,7 @@ public class SerialPortFinder {
 
 	public class Driver {
 		public Driver(String name, String root) {
-			Log.i("chw", "SerialPortFinder ---> Driver");
+			Log.i(TAG, "SerialPortFinder ---> Driver");
 			mDriverName = name;
 			mDeviceRoot = root;
 		}
@@ -38,7 +38,7 @@ public class SerialPortFinder {
 		private String mDeviceRoot;
 		Vector<File> mDevices = null;
 		public Vector<File> getDevices() {
-			Log.i("chw", "SerialPortFinder ---> getDevices");
+			Log.i(TAG, "SerialPortFinder ---> getDevices");
 			
 			if (mDevices == null) {
 				mDevices = new Vector<File>();
@@ -55,7 +55,7 @@ public class SerialPortFinder {
 			return mDevices;
 		}
 		public String getName() {
-			Log.i("chw", "SerialPortFinder ---> getName");
+			Log.i(TAG, "SerialPortFinder ---> getName");
 			return mDriverName;
 		}
 	}
@@ -66,7 +66,7 @@ public class SerialPortFinder {
 
 	Vector<Driver> getDrivers() throws IOException {
 		
-		Log.i("chw", "SerialPortFinder ---> getDrivers");
+		Log.i(TAG, "SerialPortFinder ---> getDrivers");
 		
 		if (mDrivers == null) {
 			mDrivers = new Vector<Driver>();
@@ -86,7 +86,7 @@ public class SerialPortFinder {
 
 	public String[] getAllDevices() {
 		
-		Log.i("chw", "SerialPortFinder ---> getAllDevices");
+		Log.i(TAG, "SerialPortFinder ---> getAllDevices");
 		
 		Vector<String> devices = new Vector<String>();
 		// Parse each driver
@@ -110,7 +110,7 @@ public class SerialPortFinder {
 
 	public String[] getAllDevicesPath() {
 		
-		Log.i("chw", "SerialPortFinder ---> getAllDevicesPath");
+		Log.i(TAG, "SerialPortFinder ---> getAllDevicesPath");
 		
 		Vector<String> devices = new Vector<String>();
 		// Parse each driver

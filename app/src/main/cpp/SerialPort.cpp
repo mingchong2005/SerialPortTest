@@ -140,13 +140,10 @@ JNIEXPORT jobject JNICALL SerialPort_Open(JNIEnv *env, jobject thiz, jstring pat
 		cfsetispeed(&cfg, speed);
 		cfsetospeed(&cfg, speed);
 
-		//����λ
 		cfg.c_cflag &=~CSIZE;
         cfg.c_cflag |=CS8;
-	    //��żУ��λ
-		cfg.c_cflag &=~PARENB;//���У��λ
+	    cfg.c_cflag &=~PARENB;
 
-		//����ֹͣλ
 		cfg.c_cflag &= ~CSTOPB;
 
 		tcflush(fd,TCIFLUSH);

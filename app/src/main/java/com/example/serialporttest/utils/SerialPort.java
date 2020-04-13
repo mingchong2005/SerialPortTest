@@ -39,7 +39,7 @@ public class SerialPort {
 
 	public SerialPort(File device, int baudrate) throws SecurityException, IOException {
 
-		Log.i("chw", "SerialPort ---> SerialPort");
+		Log.i(TAG, "SerialPort ---> SerialPort");
 		/* Check access permission */
 		if (!device.canRead() || !device.canWrite()) {
 			/*try {
@@ -62,19 +62,19 @@ public class SerialPort {
 
 			try {
 	              String command = "chmod 777 " + device.getAbsolutePath();
-	              Log.i("chw", "command = " + command  + "\ndevice.getAbsolutePath = " + device.getAbsolutePath());
+	              Log.i(TAG, "command = " + command  + "\ndevice.getAbsolutePath = " + device.getAbsolutePath());
 	              Runtime runtime = Runtime.getRuntime();  
 
 	              Process proc = runtime.exec(command);
 	             } catch (IOException e) {
-         		 Log.i("chw","chmod fail!!  !!");
+         		 Log.i(TAG, "chmod fail!!  !!");
 	              e.printStackTrace();
 			 throw new SecurityException();
          		}
 	        Log.i("chw", "Get serial port read/write   permission");
 		}
 
-		mFd = nativeSerialPortOpen("ttyS1", 9600);
+		mFd = nativeSerialPortOpen("/dev/ttyS1", 115200);
 		if (mFd == null) {
 			Log.e(TAG, "native open returns null ");
 			throw new IOException();
@@ -84,19 +84,19 @@ public class SerialPort {
 	}
 
 	public void close_interphone_module() {
-		Log.i("chw", "SerialPort ---> close_interphone_module");
+		Log.i(TAG, "SerialPort ---> close_interphone_module");
 
 		nativeSerialPortClose();
 	}
 	
 	// Getters and setters
 	public InputStream getInputStream() {
-		Log.i("chw", "SerialPort ---> getInputStream");
+		Log.i(TAG, "SerialPort ---> getInputStream");
 		return mFileInputStream; 
 	}
 
 	public OutputStream getOutputStream() {
-		Log.i("chw", "SerialPort ---> getOutputStream");
+		Log.i(TAG, "SerialPort ---> getOutputStream");
 		return mFileOutputStream;  
 	}
 
@@ -105,7 +105,7 @@ public class SerialPort {
 	//public native void close();
 
 	static {
-		Log.i("chw", "SerialPort ---> loadLibrary");
+		Log.i(TAG, "SerialPort ---> loadLibrary");
 		System.loadLibrary("SerialPort");
 	}
 

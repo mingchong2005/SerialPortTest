@@ -9,10 +9,10 @@
 	<string name="error_security">You do not have read/write permission to the serial port.</string>
 	<string name="error_unknown">The serial port can not be opened for an unknown reason.</string>
 
-	<string name="Test">Test</string>
-	<string name="SetGroup">Set Group</string>
-	<string name="Volume">Set Volume</string>
-	<string name="Trsmit">Transmit</string>
-	<string name="Receive">Receive</string>
+	<string name="Test">fireware version</string>
+	<string name="SetGroup">write</string>
+	<string name="Volume">Set 1111</string>
+	<string name="Trsmit">Set 2222</string>
+	<string name="Receive">Set 3333</string>
 
 </resources>

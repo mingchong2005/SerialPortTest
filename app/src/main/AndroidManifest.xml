@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
 		<activity android:name="SerialPortPreferences"></activity>
-		<activity android:name="TestActivity"></activity>
+		<activity
+            android:name="TestActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+         ></activity>
     </application>
 
 </manifest>

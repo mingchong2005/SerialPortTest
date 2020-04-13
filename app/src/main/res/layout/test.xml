@@ -7,7 +7,7 @@
    <EditText
         android:id="@+id/EditTextReceive"
         android:layout_width="fill_parent"
-        android:layout_height="60dip"
+        android:layout_height="200dip"
 		android:editable="false"
 		android:focusable="false"
         android:focusableInTouchMode="false" 
@@ -20,23 +20,15 @@
 		android:text="@string/Test" 
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content" 
-		android:layout_below="@+id/EditTextReceive"
+		android:layout_below="@+id/SetGroup"
 	/>
 
-	<Button 
-		android:id="@+id/SetGroup"
-		android:text="@string/SetGroup" 
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_below="@+id/TestBtn"
-	/>
-
-	<Button 
+	<Button
 		android:id="@+id/Volume"
 		android:text="@string/Volume" 
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content" 
-		android:layout_below="@+id/SetGroup"
+		android:layout_below="@+id/TestBtn"
 	/>
 
 	<Button 
@@ -54,5 +46,24 @@
 		android:layout_height="wrap_content" 
 		android:layout_below="@+id/Trsmit"
 	/>
+
+	<Button
+		android:id="@+id/SetGroup"
+		android:text="@string/SetGroup"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/EditTextInput"
+		/>
+
+	<EditText
+		android:id="@+id/EditTextInput"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/EditTextReceive"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:hint="InputText"
+		android:isScrollContainer="true"
+		android:scrollbarStyle="insideOverlay" />
 
 </RelativeLayout>

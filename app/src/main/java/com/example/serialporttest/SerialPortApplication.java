@@ -28,13 +28,14 @@ import android.util.Log;
 
 
 public class SerialPortApplication extends android.app.Application {
+	private static final String TAG = "SerialPort";
 
 	public SerialPortFinder mSerialPortFinder = new SerialPortFinder();
 	private SerialPort mSerialPort = null;
 
 	public SerialPort getSerialPort() throws SecurityException, IOException, InvalidParameterException {
 		
-		Log.i("chw", "SerialPortApplication ---> getAllDevicesPath");
+		Log.i(TAG, "SerialPortApplication ---> getAllDevicesPath");
 		
 		if (mSerialPort == null) {
 			//package="android.serialport.sample"
@@ -51,14 +52,14 @@ public class SerialPortApplication extends android.app.Application {
 			//}
 
 			/* Open the serial port */
-			mSerialPort = new SerialPort(new File("ttyS1"), 9600);
+			mSerialPort = new SerialPort(new File("/dev/ttyS1"), 115200);
 		}
 		return mSerialPort;
 	}
 
 	public void closeSerialPort() {
 		
-		Log.i("chw", "SerialPortApplication ---> closeSerialPort");
+		Log.i(TAG, "SerialPortApplication ---> closeSerialPort");
 		if (mSerialPort != null) {
 			mSerialPort.close_interphone_module();
 			mSerialPort = null;
