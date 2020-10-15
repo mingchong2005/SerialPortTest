@@ -10,7 +10,7 @@
 	<string name="error_unknown">The serial port can not be opened for an unknown reason.</string>
 
 	<string name="Test">fireware version</string>
-	<string name="SetGroup">write</string>
+	<string name="SetGroup">hardware model</string>
 	<string name="Volume">Set 1111</string>
 	<string name="Trsmit">Set 2222</string>
 	<string name="Receive">Set 3333</string>

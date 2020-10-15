@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
+        <string name="app_name">串口测试</string>
+        <string name="Setup">设置串口</string>
+        <string name="SpkTest">串口测试</string>
+        <string name="Quit">退出</string>
 
-    <string name="app_name">串口测试</string>
-	<string name="Setup">设置串口</string>
-	<string name="SpkTest">串口测试</string>
-	<string name="Quit">退出</string>
-		
-	<string name="error_configuration">Please configure your serial port first.</string>
-	<string name="error_security">You do not have read/write permission to the serial port.</string>
-	<string name="error_unknown">The serial port can not be opened for an unknown reason.</string>
- 
-	<string name="Test">查询固件版本</string>
-	<string name="SetGroup">写入</string>
-	<string name="Volume">设置 1111</string>
-	<string name="Trsmit">设置 2222</string>
-	<string name="Receive">设置 3333</string>
+        <string name="error_configuration">Please configure your serial port first.</string>
+        <string name="error_security">You do not have read/write permission to the serial port.</string>
+        <string name="error_unknown">The serial port can not be opened for an unknown reason.</string>
 
+        <string name="Test">查询固件版本</string>
+        <string name="SetGroup">查询硬件型号</string>
+        <string name="Volume">设置 1111</string>
+        <string name="Trsmit">设置 2222</string>
+        <string name="Receive">设置 3333</string>
+        -->
 </resources>
+
+
+

@@ -7,10 +7,10 @@
    <EditText
         android:id="@+id/EditTextReceive"
         android:layout_width="fill_parent"
-        android:layout_height="200dip"
+        android:layout_height="180dp"
 		android:editable="false"
 		android:focusable="false"
-        android:focusableInTouchMode="false" 
+        android:focusableInTouchMode="false"
         android:hint="ReceiveText"
         android:isScrollContainer="true"
         android:scrollbarStyle="insideOverlay"
